@@ -9,7 +9,9 @@
 ========================================================= */
 
 function goTo(page) {
+
     window.location.href = page;
+
 }
 
 
@@ -17,12 +19,27 @@ function goTo(page) {
    TYPING MESSAGE
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const messageElement =
-        document.getElementById("typing-message");
+        const messageElement =
+            document.getElementById(
+                "typing-message"
+            );
 
-    if (messageElement) {
+
+        if (!messageElement) {
+            return;
+        }
+
+
+        /*
+         * IMPORTANT:
+         * The message uses BACKTICKS.
+         * This fixes the syntax error
+         * from the previous version.
+         */
 
         const message = `Happy Birthday to one of the most wonderful people in my life! ❤️
 
@@ -30,18 +47,21 @@ I honestly don't know how to put into words how grateful I am to have a monna li
 
 Thank you for all the laughs, the crazy conversations, the random moments, and for always being yourself.
 
-You've been there through so many moments, and I hope you know how special you are. athrakk onnum illa okkk.
+You've been there through so many moments, and I hope you know how special you are. Athrakk onnum illa okkk.
 
 Today, I just want you to know that you deserve all the happiness, love, success and beautiful things life has to offer.
 
 Never stop smiling. Never stop being the amazing person you are.
 
-
 Happy Birthday, molee! 🥹❤️
 
-Stay happy.;
+Stay happy.
+Stay crazy.
+Stay YOU. 🫶`;
+
 
         let index = 0;
+
 
         function typeMessage() {
 
@@ -52,21 +72,24 @@ Stay happy.;
 
                 index++;
 
+
                 setTimeout(
                     typeMessage,
                     25
                 );
 
             }
+
         }
+
 
         setTimeout(
             typeMessage,
             700
         );
-    }
 
-});
+    }
+);
 
 
 /* =========================================================
@@ -75,39 +98,57 @@ Stay happy.;
 
 function celebrate() {
 
+
     const scene =
-        document.querySelector(".cake-scene");
+        document.querySelector(
+            ".cake-scene"
+        );
+
 
     const button =
-        document.querySelector(".celebrate-btn");
+        document.querySelector(
+            ".celebrate-btn"
+        );
+
 
     const message =
-        document.getElementById("cutMessage");
+        document.getElementById(
+            "cutMessage"
+        );
+
 
     if (!scene) {
         return;
     }
 
 
-    /* Prevent multiple clicks */
+    /*
+     * Prevent multiple clicks.
+     */
 
     if (
         scene.classList.contains(
             "cake-cutting"
         )
     ) {
+
         return;
+
     }
 
 
-    /* Start animation */
+    /*
+     * Start cake cutting.
+     */
 
     scene.classList.add(
         "cake-cutting"
     );
 
 
-    /* Change button */
+    /*
+     * Change button text.
+     */
 
     if (button) {
 
@@ -117,10 +158,13 @@ function celebrate() {
 
         button.innerHTML =
             "Cutting the Cake... 🎂";
+
     }
 
 
-    /* Change message */
+    /*
+     * Change message.
+     */
 
     if (message) {
 
@@ -129,34 +173,44 @@ function celebrate() {
 
         message.style.color =
             "#ff9fba";
+
     }
 
 
     /*
-       The knife animation lasts
-       approximately 3 seconds.
-    */
+     * Wait 5 seconds.
+     *
+     * This matches the longer
+     * CSS cake animation.
+     */
 
     setTimeout(
         function () {
 
+
             startConfetti();
+
 
             if (button) {
 
                 button.innerHTML =
                     "Cake Cut! ❤️";
+
             }
+
 
             if (message) {
 
                 message.textContent =
                     "Wish made! Happy Birthday! 🎉❤️";
+
             }
 
+
         },
-        3000
+        5000
     );
+
 }
 
 
@@ -166,10 +220,12 @@ function celebrate() {
 
 function startConfetti() {
 
+
     const canvas =
         document.getElementById(
             "confetti"
         );
+
 
     if (!canvas) {
         return;
@@ -179,6 +235,10 @@ function startConfetti() {
     const ctx =
         canvas.getContext("2d");
 
+
+    /*
+     * Canvas size.
+     */
 
     canvas.width =
         window.innerWidth;
@@ -190,17 +250,25 @@ function startConfetti() {
     const pieces = [];
 
 
+    /*
+     * Confetti colors.
+     */
+
     const colors = [
+
         "#ff5c8a",
         "#ff9fba",
         "#9b6cff",
         "#ffd166",
         "#ffffff",
         "#6ee7ff"
+
     ];
 
 
-    /* Create confetti */
+    /*
+     * Create 250 confetti pieces.
+     */
 
     for (
         let i = 0;
@@ -208,30 +276,38 @@ function startConfetti() {
         i++
     ) {
 
+
         pieces.push({
 
             x:
                 Math.random() *
                 canvas.width,
 
+
             y:
                 -Math.random() *
                 canvas.height,
 
+
             size:
                 Math.random() * 8 + 4,
+
 
             speed:
                 Math.random() * 4 + 3,
 
+
             rotation:
                 Math.random() * 360,
+
 
             rotationSpeed:
                 Math.random() * 8 - 4,
 
+
             gravity:
                 Math.random() * 0.08 + 0.04,
+
 
             color:
                 colors[
@@ -241,14 +317,20 @@ function startConfetti() {
                     )
                 ],
 
+
             opacity: 1
+
         });
+
     }
 
 
-    /* Animation */
+    /*
+     * Draw confetti.
+     */
 
     function drawConfetti() {
+
 
         ctx.clearRect(
             0,
@@ -264,18 +346,31 @@ function startConfetti() {
         pieces.forEach(
             function (piece) {
 
+
+                /*
+                 * Movement.
+                 */
+
                 piece.y +=
                     piece.speed;
+
 
                 piece.speed +=
                     piece.gravity;
 
+
                 piece.rotation +=
                     piece.rotationSpeed;
+
 
                 piece.opacity -=
                     0.002;
 
+
+                /*
+                 * Check whether
+                 * piece is still visible.
+                 */
 
                 if (
                     piece.y <
@@ -284,8 +379,13 @@ function startConfetti() {
                 ) {
 
                     activePieces++;
+
                 }
 
+
+                /*
+                 * Draw piece.
+                 */
 
                 ctx.save();
 
@@ -323,6 +423,7 @@ function startConfetti() {
                     piece.size,
 
                     piece.size
+
                 );
 
 
@@ -331,6 +432,10 @@ function startConfetti() {
             }
         );
 
+
+        /*
+         * Continue animation.
+         */
 
         if (
             activePieces > 0
@@ -348,11 +453,14 @@ function startConfetti() {
                 canvas.width,
                 canvas.height
             );
+
         }
+
     }
 
 
     drawConfetti();
+
 }
 
 
@@ -364,10 +472,12 @@ window.addEventListener(
     "resize",
     function () {
 
+
         const canvas =
             document.getElementById(
                 "confetti"
             );
+
 
         if (canvas) {
 
@@ -376,6 +486,8 @@ window.addEventListener(
 
             canvas.height =
                 window.innerHeight;
+
         }
+
     }
 );
