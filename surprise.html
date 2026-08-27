@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday molooo 🎂</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="surprise-page">
+
+    <canvas id="confetti"></canvas>
+
+    <!-- Previous page button -->
+    <a href="message.html" class="previous-btn">
+        ← Previous
+    </a>
+
+
+    <div class="surprise-container">
+
+        <div class="sparkle">✦</div>
+
+        <p class="small-title">TODAY IS YOUR DAY ✨</p>
+
+        <h1>
+            Happy Birthday
+            <span id="birthday-name">famidaaa ❤️</span>
+        </h1>
+
+
+        <!-- CAKE AREA -->
+
+        <div class="cake-scene">
+
+            <!-- Knife -->
+            <div class="cake-knife" id="cakeKnife">
+                <div class="knife-blade"></div>
+                <div class="knife-handle"></div>
+            </div>
+
+
+            <div class="cake">
+
+                <!-- Candle -->
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+
+                <!-- Cake top -->
+                <div class="cake-top"></div>
+
+                <!-- Cake body -->
+                <div class="cake-body">
+
+                    <div class="cream"></div>
+
+                    <div class="cake-line"></div>
+
+                    <div class="cake-line second"></div>
+
+                </div>
+
+                <!-- Plate -->
+                <div class="plate"></div>
+
+            </div>
+
+        </div>
+
+
+        <p class="cut-message" id="cutMessage">
+            Make a wish and cut the cake 🎂✨
+        </p>
+
+
+        <p class="final-message">
+            May your smile always be this bright,
+            your heart always be this kind,
+            and your life always be filled with beautiful moments. ❤️
+        </p>
+
+        <h2>
+            Stay amazing. Stay crazy. Stay YOU. 🫶
+        </h2>
+
+
+        <!-- Celebrate -->
+        <button class="main-btn celebrate-btn" onclick="celebrate()">
+            Celebrate! 🎉
+        </button>
+
+
+        <!-- Start again -->
+        <button class="restart-btn" onclick="goTo('index.html')">
+            ↻ Start Again
+        </button>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
